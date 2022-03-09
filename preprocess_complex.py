@@ -11,6 +11,19 @@ import obspy as obs
 import datetime
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 for i in range(len(st)):
     print('Start processing of trace ',i+1)
     tr = st[i]
@@ -27,13 +40,13 @@ for i in range(len(st)):
     merged.stats.network = tr.stats.network
     merged.stats.location = tr.stats.location
     merged.mask = np.zeros(merged.stats.npts, dtype=np.int32)
-    
+
     ## Look at gaps
     gap_list = tr.get_gaps()
     for gap in gap_list:
         duration = gap[6]
-        
-    
+
+
     ## Check the start date hours
     sec_check_starttime = tr.stats.starttime.second == 0
     min_check_starttime = tr.stats.starttime.minute == 0
@@ -47,7 +60,7 @@ for i in range(len(st)):
     sec_check_endtime = tr.stats.endtime.second == 59
     min_check_endtime = tr.stats.endtime.minute == 59
     hour_check_endtime = tr.stats.endtime.hour == 23
-        
+
     if np.all((sec_check_endtime,min_check_endtime,hour_check_endtime)):
         print('End time already at 23:59:59')
     else:
