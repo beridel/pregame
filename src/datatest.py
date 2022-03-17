@@ -7,13 +7,14 @@ import datatest_func as dt
 import h5py
 import obspy
 
-filelist = glob.glob('../data/*')
+#filelist = glob.glob('../data/*')
+filelist = ('../data/N4.R58B..BHZ.2015.230')
 
 for line in filelist:
     wv = read(line)
     wv_cp = wv.copy()
 
-    #dt.check_cont(wv_cp)
+    dt.check_cont(wv_cp)
     
 
 #save file as h5-format
